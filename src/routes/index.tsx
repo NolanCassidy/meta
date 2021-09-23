@@ -38,7 +38,7 @@ export default function Router() {
   return useRoutes([
     // Dashboard Routes
     {
-      path: 'dashboard',
+      path: '/meta/dashboard',
       element: <DashboardLayout />,
       children: [
         { element: <Navigate to="/meta/dashboard/one" replace /> },
