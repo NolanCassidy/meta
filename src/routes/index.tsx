@@ -59,11 +59,11 @@ export default function Router() {
 
     // Main Routes
     {
-      path: '*',
+      path: '*/meta/',
       element: <LogoOnlyLayout />,
       children: [
-        { path: '404', element: <NotFound /> },
-        { path: '*', element: <Navigate to="/meta/404" replace /> }
+        { path: '/meta/404', element: <NotFound /> },
+        { path: '*/meta/', element: <Navigate to="/meta/404" replace /> }
       ]
     },
     {
