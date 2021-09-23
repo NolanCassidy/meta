@@ -11,7 +11,7 @@ import LoadingScreen from '../components/LoadingScreen';
 const Loadable = (Component: any) => (props: any) => {
   // eslint-disable-next-line react-hooks/rules-of-hooks
   const { pathname } = useLocation();
-  const isDashboard = pathname.includes('/meta/dashboard');
+  const isDashboard = pathname.includes('/dashboard');
 
   return (
     <Suspense
@@ -38,17 +38,17 @@ export default function Router() {
   return useRoutes([
     // Dashboard Routes
     {
-      path: '/meta/dashboard',
+      path: 'dashboard',
       element: <DashboardLayout />,
       children: [
-        { element: <Navigate to="/meta/dashboard/one" replace /> },
+        { element: <Navigate to="/dashboard/one" replace /> },
         { path: 'one', element: <PageOne /> },
         { path: 'two', element: <PageTwo /> },
         { path: 'three', element: <PageThree /> },
         {
           path: 'app',
           children: [
-            { element: <Navigate to="/meta/dashboard/app/four" replace /> },
+            { element: <Navigate to="/dashboard/app/four" replace /> },
             { path: 'four', element: <PageFour /> },
             { path: 'five', element: <PageFive /> },
             { path: 'six', element: <PageSix /> }
@@ -62,8 +62,8 @@ export default function Router() {
       path: '*',
       element: <LogoOnlyLayout />,
       children: [
-        { path: '/meta/404', element: <NotFound /> },
-        { path: '*', element: <Navigate to="/meta/404" replace /> }
+        { path: '404', element: <NotFound /> },
+        { path: '*', element: <Navigate to="/404" replace /> }
       ]
     },
     {
@@ -72,11 +72,11 @@ export default function Router() {
       children: [{ element: <LandingPage /> }]
     },
     {
-      path: '/meta/lounge',
+      path: '/lounge',
       element: <MainLayout />,
       children: [{ element: <LoungePage /> }]
     },
-    { path: '*', element: <Navigate to="/meta/404" replace /> }
+    { path: '*', element: <Navigate to="/404" replace /> }
   ]);
 }
 
