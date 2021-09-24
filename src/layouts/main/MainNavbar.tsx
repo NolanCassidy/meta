@@ -13,6 +13,10 @@ import MenuDesktop from './MenuDesktop';
 import MenuMobile from './MenuMobile';
 import navConfig from './MenuConfig';
 
+import { connect } from '../../redux/blockchain/blockchainActions';
+import { fetchData } from '../../redux/data/dataActions';
+import { useDispatch, useSelector } from 'react-redux';
+
 // ----------------------------------------------------------------------
 
 const APP_BAR_MOBILE = 64;
@@ -65,9 +69,18 @@ export type MenuProps = {
 };
 
 export default function MainNavbar() {
+  const dispatch = useDispatch();
+  const blockchain = useSelector((state) => state.blockchain);
+  const data = useSelector((state) => state.data);
   const isOffset = useOffSetTop(100);
   const { pathname } = useLocation();
   const isHome = pathname === '/';
+
+  const getData = () => {
+    if (blockchain.account !== '' && blockchain.smartContract !== null) {
+      dispatch(fetchData(blockchain.account));
+    }
+  };
 
   return (
     <AppBar sx={{ boxShadow: 0, bgcolor: 'transparent' }}>
@@ -100,7 +113,16 @@ export default function MainNavbar() {
             <MenuDesktop isOffset={isOffset} isHome={isHome} navConfig={navConfig} />
           </MHidden>
 
-          <Button variant="contained"> Connect </Button>
+          <Button
+            variant="contained"
+            onClick={(e) => {
+              e.preventDefault();
+              dispatch(connect());
+              getData();
+            }}
+          >
+            Connect
+          </Button>
 
           <MHidden width="mdUp">
             <MenuMobile isOffset={isOffset} isHome={isHome} navConfig={navConfig} />

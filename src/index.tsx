@@ -12,6 +12,10 @@ import { CollapseDrawerProvider } from './contexts/CollapseDrawerContext';
 import App from './App';
 import * as serviceWorkerRegistration from './serviceWorkerRegistration';
 import reportWebVitals from './reportWebVitals';
+import store from './redux/store';
+import { Provider } from 'react-redux';
+import './styles/reset.css';
+import './styles/theme.css';
 
 // ----------------------------------------------------------------------
 
@@ -21,7 +25,9 @@ ReactDOM.render(
       <SettingsProvider>
         <CollapseDrawerProvider>
           <BrowserRouter>
-            <App />
+            <Provider store={store}>
+              <App />
+            </Provider>
           </BrowserRouter>
         </CollapseDrawerProvider>
       </SettingsProvider>
