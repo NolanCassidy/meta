@@ -40,7 +40,7 @@ export default function LandingAdvertisement() {
             <Box
               component="img"
               alt="rocket"
-              src="/meta/static/four_llamas.jpeg"
+              src="/static/four_llamas.jpeg"
               sx={{ maxWidth: 460, width: 1 }}
             />
           </motion.div>

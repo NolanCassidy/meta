@@ -67,12 +67,12 @@ export default function Router() {
       ]
     },
     {
-      path: '/meta/',
+      path: '/',
       element: <MainLayout />,
       children: [{ element: <LandingPage /> }]
     },
     {
-      path: '/meta/lounge',
+      path: '/lounge',
       element: <MainLayout />,
       children: [{ element: <LoungePage /> }]
     },

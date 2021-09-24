@@ -22,7 +22,7 @@ export default function Logo({ sx }: BoxProps) {
           fill={PRIMARY_LIGHT}
         />
       </svg>
-      <img style={{ position: 'absolute', top: 0 }} src={'/meta/static/random_llama.gif'} />
+      <img style={{ position: 'absolute', top: 0 }} src={'/static/random_llama.gif'} />
     </Box>
   );
 }

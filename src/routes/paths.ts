@@ -5,7 +5,7 @@ function path(root: string, sublink: string) {
 }
 
 const ROOTS_DASHBOARD = '/dashboard';
-const ROOTS_LOUNGE = '/meta/lounge';
+const ROOTS_LOUNGE = '/lounge';
 
 // ----------------------------------------------------------------------
 

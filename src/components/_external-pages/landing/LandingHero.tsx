@@ -69,9 +69,9 @@ export default function LandingHero() {
   return (
     <>
       <RootStyle initial="initial" animate="animate" variants={varWrapEnter}>
-        <HeroOverlayStyle alt="overlay" src="/meta/static/overlay.svg" variants={varFadeIn} />
+        <HeroOverlayStyle alt="overlay" src="/static/overlay.svg" variants={varFadeIn} />
 
-        <HeroImgStyle alt="hero" src="/meta/static/random_llama.gif" variants={varFadeInUp} />
+        <HeroImgStyle alt="hero" src="/static/random_llama.gif" variants={varFadeInUp} />
 
         <Container maxWidth="lg">
           <ContentStyle>
@@ -97,12 +97,7 @@ export default function LandingHero() {
               spacing={1}
               justifyContent={{ xs: 'center', md: 'flex-start' }}
             >
-              <img
-                alt="sketch icon"
-                src="/meta/static/icons/editor/link.svg"
-                width={20}
-                height={20}
-              />
+              <img alt="sketch icon" src="/static/icons/editor/link.svg" width={20} height={20} />
               <Link
                 underline="always"
                 href="https://www.opensea.io"
