@@ -11,8 +11,7 @@ import LoadingScreen from '../components/LoadingScreen';
 const Loadable = (Component: any) => (props: any) => {
   // eslint-disable-next-line react-hooks/rules-of-hooks
   const { pathname } = useLocation();
-  const baseURL = '/meta';
-  const isDashboard = pathname.includes(`${baseURL}/dashboard`);
+  const isDashboard = pathname.includes('/dashboard');
 
   return (
     <Suspense
@@ -36,24 +35,23 @@ const Loadable = (Component: any) => (props: any) => {
 };
 
 export default function Router() {
-  const baseURL = '/meta';
   return useRoutes([
     // Dashboard Routes
     {
-      path: `${baseURL}/dashboard`,
+      path: 'dashboard',
       element: <DashboardLayout />,
       children: [
-        { element: <Navigate to={`${baseURL}/dashboard/one`} replace /> },
-        { path: `${baseURL}/one`, element: <PageOne /> },
-        { path: `${baseURL}/two`, element: <PageTwo /> },
-        { path: `${baseURL}/three`, element: <PageThree /> },
+        { element: <Navigate to="/dashboard/one" replace /> },
+        { path: 'one', element: <PageOne /> },
+        { path: 'two', element: <PageTwo /> },
+        { path: 'three', element: <PageThree /> },
         {
-          path: `${baseURL}/app`,
+          path: 'app',
           children: [
-            { element: <Navigate to={`${baseURL}/dashboard/app/four`} replace /> },
-            { path: `${baseURL}/four`, element: <PageFour /> },
-            { path: `${baseURL}/five`, element: <PageFive /> },
-            { path: `${baseURL}/six`, element: <PageSix /> }
+            { element: <Navigate to="/dashboard/app/four" replace /> },
+            { path: 'four', element: <PageFour /> },
+            { path: 'five', element: <PageFive /> },
+            { path: 'six', element: <PageSix /> }
           ]
         }
       ]
@@ -64,21 +62,21 @@ export default function Router() {
       path: '*',
       element: <LogoOnlyLayout />,
       children: [
-        { path: `${baseURL}/404`, element: <NotFound /> },
-        { path: '*', element: <Navigate to={`${baseURL}/404`} replace /> }
+        { path: '404', element: <NotFound /> },
+        { path: '*', element: <Navigate to="/404" replace /> }
       ]
     },
     {
-      path: `${baseURL ? baseURL + '/' : '/'}`,
+      path: '/meta/',
       element: <MainLayout />,
       children: [{ element: <LandingPage /> }]
     },
     {
-      path: `${baseURL}/lounge`,
+      path: '/meta/lounge',
       element: <MainLayout />,
       children: [{ element: <LoungePage /> }]
     },
-    { path: '*', element: <Navigate to={`${baseURL}/404`} replace /> }
+    { path: '*', element: <Navigate to="/404" replace /> }
   ]);
 }
 
