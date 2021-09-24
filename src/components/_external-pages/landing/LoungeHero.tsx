@@ -69,9 +69,9 @@ export default function LoungeHero() {
   return (
     <>
       <RootStyle initial="initial" animate="animate" variants={varWrapEnter}>
-        <HeroOverlayStyle alt="overlay" src="/static/overlay.svg" variants={varFadeIn} />
+        <HeroOverlayStyle alt="overlay" src="/meta/static/overlay.svg" variants={varFadeIn} />
 
-        <HeroImgStyle alt="hero" src="/static/vote_for_pedro.png" variants={varFadeInUp} />
+        <HeroImgStyle alt="hero" src="/meta/static/vote_for_pedro.png" variants={varFadeInUp} />
 
         <Container maxWidth="lg">
           <ContentStyle>
@@ -99,7 +99,12 @@ export default function LoungeHero() {
               spacing={1}
               justifyContent={{ xs: 'center', md: 'flex-start' }}
             >
-              <img alt="sketch icon" src="\static\icons\editor\link.svg" width={20} height={20} />
+              <img
+                alt="sketch icon"
+                src="/meta/static/icons/editor/link.svg"
+                width={20}
+                height={20}
+              />
               <Link
                 underline="always"
                 href="https://www.opensea.io"

@@ -8,19 +8,19 @@ import { varFadeInUp, MotionInView, varFadeInDown } from '../../animate';
 
 const CARDS = [
   {
-    icon: '/static/icons/ic_design.svg',
+    icon: '/meta/static/icons/ic_design.svg',
     title: 'IP Rights',
     description:
       'Every Llama holder carries the intellectual property rights to their Llama. Holders will also potentially be able to profit from future Llama Lounge creative projects that we roll out.'
   },
   {
-    icon: '/static/icons/ic_code.svg',
+    icon: '/meta/meta/static/icons/ic_code.svg',
     title: 'Llama Naming',
     description:
       'Dog tags will unlock the ability to make your Llama your own by naming it on the blockchain. And in the real world. Yes you heard us.'
   },
   {
-    icon: '/static/four_llamas.jpeg',
+    icon: '/meta/static/four_llamas.jpeg',
     title: 'and much, much more!',
     description:
       'The Fan Fiction, The Fiesta, and every future crazy idea we have. And we plan to have many.'
