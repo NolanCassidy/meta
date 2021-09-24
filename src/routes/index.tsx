@@ -69,7 +69,7 @@ export default function Router() {
       ]
     },
     {
-      path: `${baseURL ? baseURL : '/'}`,
+      path: `${baseURL ? baseURL + '/' : '/'}`,
       element: <MainLayout />,
       children: [{ element: <LandingPage /> }]
     },
