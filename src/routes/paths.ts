@@ -3,7 +3,7 @@
 function path(root: string, sublink: string) {
   return `${root}${sublink}`;
 }
-const baseURL = process.env.BASE_URL || '';
+const baseURL = '/meta';
 const ROOTS_DASHBOARD = `${baseURL}/dashboard`;
 const ROOTS_LOUNGE = `${baseURL}/lounge`;
 

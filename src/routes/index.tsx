@@ -11,7 +11,7 @@ import LoadingScreen from '../components/LoadingScreen';
 const Loadable = (Component: any) => (props: any) => {
   // eslint-disable-next-line react-hooks/rules-of-hooks
   const { pathname } = useLocation();
-  const baseURL = process.env.BASE_URL || '';
+  const baseURL = '/meta';
   const isDashboard = pathname.includes(`${baseURL}/dashboard`);
 
   return (
@@ -36,7 +36,7 @@ const Loadable = (Component: any) => (props: any) => {
 };
 
 export default function Router() {
-  const baseURL = process.env.BASE_URL || '';
+  const baseURL = '/meta';
   return useRoutes([
     // Dashboard Routes
     {
