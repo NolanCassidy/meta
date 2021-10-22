@@ -39,9 +39,9 @@ const PLANS = [...Array(3)].map((_, index) => ({
 }));
 
 const RootStyle = styled('div')(({ theme }) => ({
-  paddingTop: theme.spacing(15),
+  paddingTop: theme.spacing(2),
   [theme.breakpoints.up('md')]: {
-    paddingBottom: theme.spacing(15)
+    paddingBottom: theme.spacing(2)
   }
 }));
 
@@ -181,60 +181,18 @@ export default function LandingPricingPlans() {
   const isLight = theme.palette.mode === 'light';
 
   return (
-    <RootStyle>
+    <RootStyle id="team">
       <Container maxWidth="lg">
-        <Box sx={{ mb: 10, textAlign: 'center' }}>
-          <MotionInView variants={varFadeInUp}>
-            <Typography component="p" variant="overline" sx={{ mb: 2, color: 'text.secondary' }}>
-              pricing plans
-            </Typography>
-          </MotionInView>
-          <MotionInView variants={varFadeInDown}>
-            <Typography variant="h2" sx={{ mb: 3 }}>
-              The right plan for your business
-            </Typography>
-          </MotionInView>
-          <MotionInView variants={varFadeInDown}>
-            <Typography
-              sx={{
-                color: isLight ? 'text.secondary' : 'text.primary'
-              }}
-            >
-              Choose the perfect plan for your needs. Always flexible to grow
-            </Typography>
-          </MotionInView>
-        </Box>
-
-        <Grid container spacing={5}>
-          {PLANS.map((plan, index) => (
-            <Grid key={plan.license} item xs={12} md={4}>
-              <MotionInView variants={index === 1 ? varFadeInDown : varFadeInUp}>
-                <PlanCard plan={plan} cardIndex={index} />
-              </MotionInView>
-            </Grid>
-          ))}
-        </Grid>
-
         <MotionInView variants={varFadeIn}>
-          <Box sx={{ p: 5, mt: 10, textAlign: 'center' }}>
+          <Box sx={{ p: 2, mt: 5, textAlign: 'center' }}>
             <MotionInView variants={varFadeInDown}>
-              <Typography variant="h3">Still have questions?</Typography>
+              <Typography variant="h3">Have any questions?</Typography>
             </MotionInView>
 
             <MotionInView variants={varFadeInDown}>
               <Typography sx={{ mt: 3, mb: 5, color: 'text.secondary' }}>
-                Please describe your case to receive the most accurate advice.
+                If your question is not below please reach out in any of our community chats.
               </Typography>
-            </MotionInView>
-
-            <MotionInView variants={varFadeInUp}>
-              <Button
-                size="large"
-                variant="contained"
-                href="mailto:support@minimals.cc?subject=[Feedback] from Customer"
-              >
-                Contact us
-              </Button>
             </MotionInView>
           </Box>
         </MotionInView>

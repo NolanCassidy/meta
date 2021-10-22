@@ -45,7 +45,8 @@ const HeroOverlayStyle = styled(motion.img)({
   width: '100%',
   height: '100%',
   objectFit: 'cover',
-  position: 'absolute'
+  position: 'absolute',
+  opacity: '0.6 !important'
 });
 
 const HeroImgStyle = styled(motion.img)(({ theme }) => ({
@@ -56,11 +57,13 @@ const HeroImgStyle = styled(motion.img)(({ theme }) => ({
   width: '100%',
   margin: 'auto',
   position: 'absolute',
-  [theme.breakpoints.up('lg')]: {
-    right: '8%',
-    width: 'auto',
-    height: '48vh'
-  }
+  objectFit: 'cover',
+  height: '100%'
+  // [theme.breakpoints.up('lg')]: {
+  //   right: '8%',
+  //   width: 'auto',
+  //   height: '48vh'
+  // }
 }));
 
 // ----------------------------------------------------------------------
@@ -71,7 +74,7 @@ export default function LandingHero() {
       <RootStyle initial="initial" animate="animate" variants={varWrapEnter}>
         <HeroOverlayStyle alt="overlay" src="/static/overlay.svg" variants={varFadeIn} />
 
-        <HeroImgStyle alt="hero" src="/static/random_llama.gif" variants={varFadeInUp} />
+        <HeroImgStyle alt="hero" src="/static/starhouse.png" variants={varFadeInUp} />
 
         <Container maxWidth="lg">
           <ContentStyle>

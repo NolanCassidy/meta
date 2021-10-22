@@ -1,7 +1,8 @@
 import { Icon } from '@iconify/react';
 import { motion } from 'framer-motion';
 import { useState, useEffect, ReactNode } from 'react';
-import { NavLink as RouterLink, useLocation } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
+import { HashLink as RouterLink } from 'react-router-hash-link';
 import arrowIosUpwardFill from '@iconify/icons-eva/arrow-ios-upward-fill';
 import arrowIosDownwardFill from '@iconify/icons-eva/arrow-ios-downward-fill';
 // material
@@ -215,13 +216,13 @@ function MenuDesktopItem({
     <LinkStyle
       to={path}
       component={RouterLink}
-      end={path === '/'}
+      // end={path === '/'}
       sx={{
         ...(isHome && { color: 'common.white' }),
-        ...(isOffset && { color: 'text.primary' }),
-        '&.active': {
-          color: 'primary.main'
-        }
+        ...(isOffset && { color: 'text.primary' })
+        // '&.active': {
+        //   color: 'primary.main'
+        // }
       }}
     >
       {title}

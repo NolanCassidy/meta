@@ -8,31 +8,32 @@ import { varFadeInUp, MotionInView, varFadeInDown } from '../../animate';
 
 const CARDS = [
   {
-    icon: '/static/icons/ic_design.svg',
-    title: 'IP Rights',
+    icon: '/static/chest3.png',
+    title: 'Loot',
     description:
-      'Every Llama holder carries the intellectual property rights to their Llama. Holders will also potentially be able to profit from future Llama Lounge creative projects that we roll out.'
+      'Throughout our roadmap we will redistribute ethereum to our holders. Imagine your NFT as a share to the proceeds from all meta projects to come. '
   },
   {
-    icon: '/static/icons/ic_code.svg',
-    title: 'Llama Naming',
+    icon: '/static/squarehouse.png',
+    title: 'Lounge',
     description:
-      'Dog tags will unlock the ability to make your Llama your own by naming it on the blockchain. And in the real world. Yes you heard us.'
+      'Gain special access to the llama lounge. These unique 5678 llamas will be the key to early access to our future roadmap projects, giveaways, and more.'
   },
   {
-    icon: '/static/four_llamas.jpeg',
-    title: 'and much, much more!',
+    icon: '/static/custom.png',
+    title: 'Customization',
     description:
-      'The Fan Fiction, The Fiesta, and every future crazy idea we have. And we plan to have many.'
+      'New llama styles will be released for short periods of time. Changing outfits will lose previous outfits creating more rarity and income for the holders.'
   }
 ];
 
 const shadowIcon = (color: string) => `drop-shadow(2px 2px 2px ${alpha(color, 0.48)})`;
 
 const RootStyle = styled('div')(({ theme }) => ({
-  paddingTop: theme.spacing(15),
+  paddingTop: theme.spacing(5),
+  paddingBottom: theme.spacing(5),
   [theme.breakpoints.up('md')]: {
-    paddingBottom: theme.spacing(15)
+    paddingBottom: theme.spacing(5)
   }
 }));
 
@@ -47,14 +48,14 @@ const CardStyle = styled(Card)(({ theme }) => {
     minHeight: 440,
     margin: 'auto',
     textAlign: 'center',
-    padding: theme.spacing(10, 5, 0),
+    padding: theme.spacing(5, 5, 5),
     boxShadow: `-40px 40px 80px 0 ${shadowCard(0.48)}`,
     [theme.breakpoints.up('md')]: {
       boxShadow: 'none',
       backgroundColor: theme.palette.grey[theme.palette.mode === 'light' ? 200 : 800]
     },
     '&.cardLeft': {
-      [theme.breakpoints.up('md')]: { marginTop: -40 }
+      [theme.breakpoints.up('md')]: { marginTop: -0 }
     },
     '&.cardCenter': {
       [theme.breakpoints.up('md')]: {
@@ -82,10 +83,10 @@ const CardStyle = styled(Card)(({ theme }) => {
 });
 
 const CardIconStyle = styled('img')(({ theme }) => ({
-  width: 40,
-  height: 40,
+  // width: 40,
+  // height: 40,
   margin: 'auto',
-  marginBottom: theme.spacing(10),
+  marginBottom: theme.spacing(5),
   filter: shadowIcon(theme.palette.primary.main)
 }));
 
@@ -97,21 +98,21 @@ export default function LandingMinimalHelps() {
   const isDesktop = useMediaQuery(theme.breakpoints.up('lg'));
 
   return (
-    <RootStyle>
+    <RootStyle id="features">
       <Container maxWidth="lg">
-        <Box sx={{ mb: { xs: 10, md: 25 } }}>
+        <Box sx={{ mb: { xs: 5, md: 15 } }}>
           <MotionInView variants={varFadeInUp}>
             <Typography
               component="p"
               variant="overline"
               sx={{ mb: 2, color: 'text.secondary', textAlign: 'center' }}
             >
-              Meta
+              A collection with functionality
             </Typography>
           </MotionInView>
           <MotionInView variants={varFadeInDown}>
             <Typography variant="h2" sx={{ textAlign: 'center' }}>
-              Llamas to the moon!
+              Features
             </Typography>
           </MotionInView>
         </Box>

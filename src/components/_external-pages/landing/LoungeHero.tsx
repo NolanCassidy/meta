@@ -1,12 +1,7 @@
-import { Icon } from '@iconify/react';
 import { motion } from 'framer-motion';
-import flashFill from '@iconify/icons-eva/flash-fill';
-import { Link as RouterLink } from 'react-router-dom';
 // material
 import { styled } from '@mui/material/styles';
-import { Button, Box, Link, Container, Typography, Stack } from '@mui/material';
-// routes
-import { PATH_DASHBOARD } from '../../../routes/paths';
+import { Box, Link, Container, Typography, Stack } from '@mui/material';
 //
 import { varFadeIn, varFadeInUp, varWrapEnter, varFadeInRight } from '../../animate';
 
@@ -45,7 +40,8 @@ const HeroOverlayStyle = styled(motion.img)({
   width: '100%',
   height: '100%',
   objectFit: 'cover',
-  position: 'absolute'
+  position: 'absolute',
+  opacity: '0.7 !important'
 });
 
 const HeroImgStyle = styled(motion.img)(({ theme }) => ({
@@ -56,11 +52,13 @@ const HeroImgStyle = styled(motion.img)(({ theme }) => ({
   width: '100%',
   margin: 'auto',
   position: 'absolute',
-  [theme.breakpoints.up('lg')]: {
-    right: '8%',
-    width: 'auto',
-    height: '48vh'
-  }
+  objectFit: 'cover',
+  height: '100%'
+  // [theme.breakpoints.up('lg')]: {
+  //   right: '8%',
+  //   width: 'auto',
+  //   height: '48vh'
+  // }
 }));
 
 // ----------------------------------------------------------------------
@@ -71,7 +69,7 @@ export default function LoungeHero() {
       <RootStyle initial="initial" animate="animate" variants={varWrapEnter}>
         <HeroOverlayStyle alt="overlay" src="/static/overlay.svg" variants={varFadeIn} />
 
-        <HeroImgStyle alt="hero" src="/static/vote_for_pedro.png" variants={varFadeInUp} />
+        <HeroImgStyle alt="hero" src="/static/galaxysplash.jfif" variants={varFadeInUp} />
 
         <Container maxWidth="lg">
           <ContentStyle>

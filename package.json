@@ -1,5 +1,5 @@
 {
-  "name": "Meta Llama",
+  "name": "MetaLlama",
   "author": "Nolan Cassidy",
   "version": "2.6.0",
   "private": true,
@@ -90,6 +90,7 @@
     "react-redux": "^7.2.5",
     "react-router": "^6.0.0-beta.4",
     "react-router-dom": "^6.0.0-beta.4",
+    "react-router-hash-link": "^2.4.3",
     "react-scripts": "4.0.1",
     "react-scroll": "^1.8.4",
     "react-signature-canvas": "^1.0.3",
@@ -122,8 +123,8 @@
     "eject": "react-scripts eject",
     "lint": "eslint --ext .ts,.tsx ./src",
     "lint:fix": "eslint --fix --ext .ts,.tsx ./src",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
+    "predeploy": "yarn run build",
+    "deploy": "firebase deploy"
   },
   "eslintConfig": {
     "extends": [

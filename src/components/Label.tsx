@@ -8,7 +8,7 @@ import { ColorSchema } from '../@types/theme';
 
 type LabelColor = 'default' | 'primary' | 'secondary' | 'info' | 'success' | 'warning' | 'error';
 
-type LabelVariant = 'filled' | 'outlined' | 'ghost';
+type LabelVariant = 'filled' | 'outlined' | 'ghost' | 'none';
 
 const RootStyle = styled('span')(
   ({
@@ -40,6 +40,12 @@ const RootStyle = styled('span')(
       backgroundColor: alpha(theme.palette[color].main, 0.16)
     });
 
+    const styleNone = (color: ColorSchema) => ({
+      backgroundColor: 'transparent',
+      color: theme.palette[color].main,
+      border: 'none'
+    });
+
     return {
       height: 22,
       minWidth: 22,
@@ -61,7 +67,8 @@ const RootStyle = styled('span')(
         ? {
             ...(variant === 'filled' && { ...styleFilled(color) }),
             ...(variant === 'outlined' && { ...styleOutlined(color) }),
-            ...(variant === 'ghost' && { ...styleGhost(color) })
+            ...(variant === 'ghost' && { ...styleGhost(color) }),
+            ...(variant === 'none' && { ...styleNone(color) })
           }
         : {
             ...(variant === 'outlined' && {
@@ -72,6 +79,11 @@ const RootStyle = styled('span')(
             ...(variant === 'ghost' && {
               color: isLight ? theme.palette.text.secondary : theme.palette.common.white,
               backgroundColor: theme.palette.grey[500_16]
+            }),
+            ...(variant === 'none' && {
+              backgroundColor: 'transparent',
+              color: theme.palette.text.primary,
+              border: 'none'
             })
           })
     };

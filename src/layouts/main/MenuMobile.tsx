@@ -1,11 +1,12 @@
 import { Icon } from '@iconify/react';
 import { useState, useEffect, ReactNode } from 'react';
 import menu2Fill from '@iconify/icons-eva/menu-2-fill';
-import { NavLink as RouterLink, useLocation } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
+import { HashLink as RouterLink } from 'react-router-hash-link';
 import arrowIosForwardFill from '@iconify/icons-eva/arrow-ios-forward-fill';
 import arrowIosDownwardFill from '@iconify/icons-eva/arrow-ios-downward-fill';
 // material
-import { alpha, styled } from '@mui/material/styles';
+import { styled } from '@mui/material/styles';
 import {
   Box,
   List,
@@ -129,15 +130,7 @@ function MenuMobileItem({ item, isOpen, onOpen }: MenuMobileItemProps) {
     <ListItemStyle
       to={path}
       component={RouterLink}
-      end={path === '/'}
-      sx={{
-        '&.active': {
-          color: 'primary.main',
-          fontWeight: 'fontWeightMedium',
-          bgcolor: (theme) =>
-            alpha(theme.palette.primary.main, theme.palette.action.selectedOpacity)
-        }
-      }}
+      //end={path === '/'}
     >
       <ListItemIcon>{icon}</ListItemIcon>
       <ListItemText disableTypography primary={title} />

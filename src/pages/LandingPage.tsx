@@ -20,7 +20,7 @@ const ContentStyle = styled('div')(({ theme }) => ({
 
 export default function LandingPage() {
   return (
-    <RootStyle title="Enter Here | Meta Llama" id="move_top">
+    <RootStyle title="Enter Here | Meta Llama">
       <LandingHero />
     </RootStyle>
   );

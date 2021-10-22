@@ -1,4 +1,5 @@
 // material
+import { motion } from 'framer-motion';
 import { alpha, useTheme, styled } from '@mui/material/styles';
 import { Box, Grid, Button, Container, Typography } from '@mui/material';
 //
@@ -7,19 +8,18 @@ import { varFadeInUp, MotionInView } from '../../animate';
 // ----------------------------------------------------------------------
 
 const RootStyle = styled('div')(({ theme }) => ({
-  padding: theme.spacing(24, 0),
-  backgroundImage:
-    theme.palette.mode === 'light'
-      ? `linear-gradient(180deg, ${alpha(theme.palette.grey[300], 0)} 0%, ${
-          theme.palette.grey[300]
-        } 100%)`
-      : 'none'
+  display: 'block',
+  padding: theme.spacing(15, 0),
+  paddingBottom: '15vh',
+  backgroundImage: `url(/static/galaxysplash.jfif)`,
+  backgroundSize: 'cover',
+  position: 'relative'
 }));
 
 const ContentStyle = styled('div')(({ theme }) => ({
   width: '100%',
   textAlign: 'center',
-  marginBottom: theme.spacing(10),
+  zIndex: 9,
   [theme.breakpoints.up('md')]: {
     textAlign: 'left',
     marginBottom: 0
@@ -44,6 +44,15 @@ const ScreenStyle = styled(MotionInView)(({ theme }) => ({
     }
   }
 }));
+
+const HeroOverlayStyle = styled(motion.img)({
+  width: '100%',
+  height: '100%',
+  objectFit: 'cover',
+  position: 'absolute',
+  opacity: '0.7 !important',
+  top: 0
+});
 
 const COMMON = {
   scaleX: 0.86,
@@ -80,7 +89,8 @@ export default function LandingHugePackElements() {
   const screenRightAnimate = variantScreenRight;
 
   return (
-    <RootStyle>
+    <RootStyle id="team">
+      <HeroOverlayStyle alt="overlay" src="/static/overlay.svg" />
       <Container maxWidth="lg">
         <Grid container spacing={5} justifyContent="center">
           <Grid item xs={12} md={4} sx={{ display: 'flex', alignItems: 'center' }}>
@@ -91,14 +101,13 @@ export default function LandingHugePackElements() {
                   variant="overline"
                   sx={{ mb: 2, color: 'text.secondary' }}
                 >
-                  Interface Starter Kit
+                  Meta Llama
                 </Typography>
               </MotionInView>
 
               <MotionInView variants={varFadeInUp}>
                 <Typography variant="h2" sx={{ mb: 3 }}>
-                  Huge pack <br />
-                  of elements
+                  Meet the team
                 </Typography>
               </MotionInView>
 
@@ -109,15 +118,9 @@ export default function LandingHugePackElements() {
                     color: isLight ? 'text.secondary' : 'common.white'
                   }}
                 >
-                  We collected most popular elements. Menu, sliders, buttons, inputs etc. are all
-                  here. Just dive in!
+                  Just two crypto finiatics on a mission. 1 coder and 1 artist. Looking for
+                  animators, marketers, amd affilates. Join the growing Meta Llama team today.
                 </Typography>
-              </MotionInView>
-
-              <MotionInView variants={varFadeInUp}>
-                <Button size="large" color="inherit" variant="outlined">
-                  View All Components
-                </Button>
               </MotionInView>
             </ContentStyle>
           </Grid>
@@ -160,7 +163,13 @@ export default function LandingHugePackElements() {
                 >
                   <img
                     alt={`screen ${index + 1}`}
-                    src={`/static/home/screen_${isLight ? 'light' : 'dark'}_${index + 1}.png`}
+                    src={
+                      index === 0
+                        ? '/static/llamas/2.png'
+                        : index === 1
+                        ? '/static/llamas/1.png'
+                        : '/static/random_llama.gif'
+                    }
                   />
                 </ScreenStyle>
               ))}

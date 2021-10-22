@@ -12,11 +12,9 @@ import { MHidden } from '../../components/@material-extend';
 import MenuDesktop from './MenuDesktop';
 import MenuMobile from './MenuMobile';
 import navConfig from './MenuConfig';
-
+import { useDispatch, useSelector } from 'react-redux';
 import { connect } from '../../redux/blockchain/blockchainActions';
 import { fetchData } from '../../redux/data/dataActions';
-import { useDispatch, useSelector } from 'react-redux';
-
 // ----------------------------------------------------------------------
 
 const APP_BAR_MOBILE = 64;
@@ -69,18 +67,21 @@ export type MenuProps = {
 };
 
 export default function MainNavbar() {
-  const dispatch = useDispatch();
-  const blockchain = useSelector((state) => state.blockchain);
-  const data = useSelector((state) => state.data);
   const isOffset = useOffSetTop(100);
   const { pathname } = useLocation();
-  const isHome = pathname === '/';
-
+  // const isHome = pathname === '/';
+  const blockchain = useSelector((state) => state.blockchain);
+  const isHome = true;
+  const dispatch = useDispatch();
   const getData = () => {
     if (blockchain.account !== '' && blockchain.smartContract !== null) {
       dispatch(fetchData(blockchain.account));
     }
   };
+
+  // <div onClick={() => window.location.replace('/lounge#buy')}>
+  //   <Button variant="contained">Buy</Button>
+  // </div>
 
   return (
     <AppBar sx={{ boxShadow: 0, bgcolor: 'transparent' }}>
@@ -104,26 +105,30 @@ export default function MainNavbar() {
           <RouterLink to="/">
             <Logo />
           </RouterLink>
-          <Label color="info" sx={{ ml: 1 }}>
+          <Label color="primary" sx={{ ml: 1 }}>
             Meta Llama
           </Label>
           <Box sx={{ flexGrow: 1 }} />
-
           <MHidden width="mdDown">
             <MenuDesktop isOffset={isOffset} isHome={isHome} navConfig={navConfig} />
           </MHidden>
-
-          <Button
-            variant="contained"
-            onClick={(e) => {
-              e.preventDefault();
-              dispatch(connect());
-              getData();
-            }}
-          >
-            Connect
-          </Button>
-
+          {blockchain.account === null && (
+            <Button
+              variant="contained"
+              onClick={(e) => {
+                e.preventDefault();
+                dispatch(connect());
+                getData();
+              }}
+              sx={{
+                whiteSpace: 'nowrap',
+                boxShadow: (theme) => theme.customShadows.z8,
+                '&:hover': { bgcolor: 'grey.300' }
+              }}
+            >
+              Connect
+            </Button>
+          )}
           <MHidden width="mdUp">
             <MenuMobile isOffset={isOffset} isHome={isHome} navConfig={navConfig} />
           </MHidden>

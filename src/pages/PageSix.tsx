@@ -11,7 +11,7 @@ export default function PageSix() {
   const { themeStretch } = useSettings();
 
   return (
-    <Page title="Page Six | Minimal-UI">
+    <Page title="Page Six | Meta Llama">
       <Container maxWidth={themeStretch ? false : 'xl'}>
         <Typography variant="h3" component="h1" paragraph>
           Page Six

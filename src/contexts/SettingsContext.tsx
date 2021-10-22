@@ -98,9 +98,9 @@ function SetColor(themeColor: ThemeColor) {
 }
 
 const initialState: SettingsContextProps = {
-  themeMode: 'light',
+  themeMode: 'dark',
   themeDirection: 'ltr',
-  themeColor: 'default',
+  themeColor: 'orange',
   themeStretch: false,
   onChangeMode: () => {},
   onChangeDirection: () => {},
@@ -118,9 +118,9 @@ type SettingsProviderProps = {
 
 function SettingsProvider({ children }: SettingsProviderProps) {
   const [settings, setSettings] = useLocalStorage('settings', {
-    themeMode: 'light',
+    themeMode: 'dark',
     themeDirection: 'ltr',
-    themeColor: 'default',
+    themeColor: 'orange',
     themeStretch: false
   });
 

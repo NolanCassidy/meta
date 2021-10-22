@@ -41,51 +41,55 @@ export const updateAccount = (account) => {
 
 export const connect = () => {
   return async (dispatch) => {
-    dispatch(connectRequest());
-    const { ethereum } = window;
-    const metamaskIsInstalled = ethereum && ethereum.isMetaMask;
-    await window.ethereum.request({
-      method: 'eth_requestAccounts'
-    });
-    if (metamaskIsInstalled) {
-      Web3EthContract.setProvider(ethereum);
-      let web3 = new Web3(ethereum);
-      try {
-        const accounts = await ethereum.request({
-          method: 'eth_requestAccounts'
-        });
-        const networkId = await ethereum.request({
-          method: 'net_version'
-        });
-        // const NetworkData = await SmartContract.networks[networkId];
-        if (networkId == 1) {
-          const SmartContractObj = new Web3EthContract(
-            SmartContract,
-            '0x2e3631e3fb32cc9f17bbe61881c057fd982fb476'
-          );
-          dispatch(
-            connectSuccess({
-              account: accounts[0],
-              smartContract: SmartContractObj,
-              web3: web3
-            })
-          );
-          // Add listeners start
-          ethereum.on('accountsChanged', (accounts) => {
-            dispatch(updateAccount(accounts[0]));
+    try {
+      dispatch(connectRequest());
+      const { ethereum } = window;
+      const metamaskIsInstalled = ethereum && ethereum.isMetaMask;
+      await window.ethereum.request({
+        method: 'eth_requestAccounts'
+      });
+      if (metamaskIsInstalled) {
+        Web3EthContract.setProvider(ethereum);
+        let web3 = new Web3(ethereum);
+        try {
+          const accounts = await ethereum.request({
+            method: 'eth_requestAccounts'
           });
-          ethereum.on('chainChanged', () => {
-            window.location.reload();
+          const networkId = await ethereum.request({
+            method: 'net_version'
           });
-          // Add listeners end
-        } else {
-          dispatch(connectFailed('Change network to Ethereum'));
+          // const NetworkData = await SmartContract.networks[networkId];
+          if (networkId == 4) {
+            const SmartContractObj = new Web3EthContract(
+              SmartContract,
+              '0x5D9972E695Cf8BAaf1b2Ca79170039A8fE5a93d9'
+            );
+            dispatch(
+              connectSuccess({
+                account: accounts[0],
+                smartContract: SmartContractObj,
+                web3: web3
+              })
+            );
+            // Add listeners start
+            ethereum.on('accountsChanged', (accounts) => {
+              dispatch(updateAccount(accounts[0]));
+            });
+            ethereum.on('chainChanged', () => {
+              window.location.reload();
+            });
+            // Add listeners end
+          } else {
+            dispatch(connectFailed('Change network to Ethereum'));
+          }
+        } catch (err) {
+          dispatch(connectFailed('Something went wrong'));
         }
-      } catch (err) {
-        dispatch(connectFailed('Something went wrong'));
+      } else {
+        dispatch(connectFailed('Install Metamask'));
       }
-    } else {
-      dispatch(connectFailed('Install Metamask'));
+    } catch (err) {
+      dispatch(connectFailed('Please Fix Metamask'));
     }
   };
 };

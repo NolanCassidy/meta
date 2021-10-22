@@ -11,7 +11,7 @@ export default function PageOne() {
   const { themeStretch } = useSettings();
 
   return (
-    <Page title="Page One | Minimal-UI">
+    <Page title="Page One | Meta Llama">
       <Container maxWidth={themeStretch ? false : 'xl'}>
         <Typography variant="h3" component="h1" paragraph>
           Page One

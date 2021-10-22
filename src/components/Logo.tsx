@@ -8,21 +8,19 @@ export default function Logo({ sx }: BoxProps) {
   const theme = useTheme();
   const PRIMARY_LIGHT = theme.palette.primary.light;
   const PRIMARY_MAIN = theme.palette.primary.main;
-  const PRIMARY_DARK = theme.palette.primary.dark;
 
   return (
-    <Box style={{ position: 'relative' }} sx={{ width: 60, height: 60, ...sx }}>
-      <svg style={{ position: 'relative' }} width="60" height="60">
-        <circle
-          cx="30"
-          cy="30"
-          r="25"
-          stroke={PRIMARY_MAIN}
-          stroke-width="3"
-          fill={PRIMARY_LIGHT}
-        />
+    <Box style={{ position: 'relative' }} sx={{ width: 70, height: 70, ...sx }}>
+      <svg style={{ position: 'relative' }} width="70" height="70">
+        <circle cx="35" cy="35" r="30" stroke={PRIMARY_MAIN} strokeWidth="3" fill={PRIMARY_LIGHT} />
       </svg>
-      <img style={{ position: 'absolute', top: 0 }} src={'/static/random_llama.gif'} />
+      <img
+        style={{ position: 'absolute', top: 0, marginTop: '10px', marginLeft: '10px' }}
+        src={'/static/logo.png'}
+        alt="random llama"
+        width="50"
+        height="50"
+      />
     </Box>
   );
 }
